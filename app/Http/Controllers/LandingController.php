@@ -74,7 +74,8 @@ class LandingController extends Controller
 
         $inbox = Inbox::create($request->all());
 
-        Mail::mailer('smtp_mailtrap')->to($request->email)->send(new InboxMail($inbox));
+        // Mail::mailer('smtp_mailtrap')->to($request->email)->send(new InboxMail($inbox));
+        Mail::to($request->email)->send(new InboxMail($inbox));
 
         return response()->json([
             'success' => true,
